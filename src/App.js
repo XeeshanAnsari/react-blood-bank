@@ -5,6 +5,7 @@ import Header from "./components/header"
 import * as MUI from 'material-ui'
 import Buttons from './components/button'
 import  SignUp  from './components/signup/signup'
+import  SignIn  from './components/signin/signin'
 
 
 // Initialize Firebase
@@ -17,7 +18,6 @@ import  SignUp  from './components/signup/signup'
      firebase.initializeApp(config);
 // Initialize Firebase
 
-
  class App extends Component {
     render(){
         return (
@@ -25,8 +25,8 @@ import  SignUp  from './components/signup/signup'
                 <Router history={browserHistory}>
                     
                     <Route path="/" component={SignUp}/>
-                     {/*<Route path="/" component={Header}/>*/}
-                     <Route path="/buttons" component={Buttons}/>
+                     <Route path="/signin" component={SignIn}/>
+                     <Route path="/home" component={Header}/>
                      
                     
                 </Router>    
