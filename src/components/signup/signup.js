@@ -17,10 +17,10 @@ class SignUp extends Component{
           
 
       }
-      this.handleSubmit = this.handleSubmit.bind(this)
+      this.handleSignUp = this.handleSignUp.bind(this)
   }
  
-  handleSubmit(e){
+  handleSignUp(e){
       e.preventDefault()
 
       const user ={
@@ -30,8 +30,8 @@ class SignUp extends Component{
           pass:this.state.pass
       }
 // Data save to database
-     const firebaseDb = firebase.database();
-      firebaseDb.ref("Uers").push(user);
+    //  const firebaseDb = firebase.database();
+    //   firebaseDb.ref("/Users").push({user});
       
 
        const auth = firebase.auth();
@@ -41,6 +41,14 @@ class SignUp extends Component{
         //    browserHistory.push('/signin');
         })
         promise.catch(e => console.log("error" + e.message));
+
+// after submit value null
+        this.setState = {
+          fName:'',
+          lName:'',
+          email:'',
+          pass:'',
+        }
   }
   
     
@@ -52,33 +60,40 @@ class SignUp extends Component{
               <MUI.MuiThemeProvider>
                   <div className="signup-container">
                       <MUI.Paper className="signup-paper" >
-                      <form onSubmit={this.handleSubmit}>
+                      <form onSubmit={this.handleSignUp}>
                         <MUI.TextField  
+                          
                             floatingLabelText="First Name" 
                             hintText="First Name"
                             fullWidth={true}
                             onChange={e => this.setState({fName: e.target.value})}
-                            requried="requried" />
+                            />
                         <MUI.TextField  
                             floatingLabelText="Last Name" 
                             hintText="Last Name"
                             fullWidth={true}
                            onChange={e => this.setState({lName: e.target.value})}
-                            requried="requried" />
+                             />
                         <MUI.TextField  
                             floatingLabelText="Email" 
                             hintText="Email"
                             fullWidth={true}
                              onChange={e => this.setState({email: e.target.value})}
-                            requried="requried" />
+                            />
                         <MUI.TextField  
                             floatingLabelText="Password" 
                             hintText="Password"
                             fullWidth={true}
                             onChange={e => this.setState({pass: e.target.value})}
-                            requried="requried" />
+                            type="password"
+                            />
                        
-                       <MUI.RaisedButton type="submit" primary={true}>Submit</MUI.RaisedButton>
+                       <MUI.RaisedButton 
+                               type="submit"
+                                label="Signup"
+                                className="signup-btn"
+                                primary={true}
+                                />
 
 
                      </form>
